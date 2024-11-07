@@ -1,0 +1,77 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_manufacturer",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_batchID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_quantity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_type",
+						"type": "string"
+					}
+				],
+				"name": "mintToken",
+				"outputs": [],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"custom:dev-run-script": "./scripts/deploy_with_ethers.ts",
+			"details": "Store & retrieve value in a variable",
+			"kind": "dev",
+			"methods": {},
+			"title": "Storage",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/1_Storage.sol": "Storage"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/1_Storage.sol": {
+			"keccak256": "0xa5c651a4888701bbd3a7d78660346e0378b17793266edadba3ab7cbf1192d436",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://1d8dcc778c6136167ba442c46625930b5edf2ffac96cddf4c5fcc8b7857e9069",
+				"dweb:/ipfs/QmQuc3BuYRoeXL7t7sMj7gHQEY99Qz5DVCj2BEBerDmVc8"
+			]
+		}
+	},
+	"version": 1
+}
