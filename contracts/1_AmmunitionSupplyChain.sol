@@ -69,7 +69,7 @@ contract AmmunitionSupplyChain is ERC721("Ammunition Supply Chain", "ASC") {
 
     // Function to transfer the token to the transport agency
     function transferToTransport(string memory _batchID, address _transportAgency) public {
-        require(tokens[_batchID].currentOwner == msg.sender, "You are not the owner of this batch");
+        require(tokens[_batchID].currentOwner == msg.sender || msg.sender == admin, "You are neither the owner of this batch nor an admin.");
         require(keccak256(abi.encodePacked(tokens[_batchID].status)) == keccak256(abi.encodePacked("Manufactured")), "Invalid token status");
 
         tokens[_batchID].currentOwner = _transportAgency;
@@ -79,8 +79,9 @@ contract AmmunitionSupplyChain is ERC721("Ammunition Supply Chain", "ASC") {
     }
 
     // Function to receive the token at the depot
-    function receiveAtDepot(string memory _batchID, address _depot) public {
-        require(tokens[_batchID].currentOwner == msg.sender, "You are not the owner of this batch");
+    function receiveAtDepot(string memory _batchID, address _depot) public onlyAdmin{
+        require(tokens[_batchID].currentOwner == msg.sender || msg.sender == admin, "You are neither the owner of this batch nor an admin.");
+
         require(keccak256(abi.encodePacked(tokens[_batchID].status)) == keccak256(abi.encodePacked("In Transit")), "Batch not in transit");
 
         tokens[_batchID].currentOwner = _depot;
@@ -91,7 +92,7 @@ contract AmmunitionSupplyChain is ERC721("Ammunition Supply Chain", "ASC") {
 
     // Function to issue the token to the army unit
     function issueToArmyUnit(string memory _batchID, address _armyUnit) public {
-        require(tokens[_batchID].currentOwner == msg.sender, "You are not the owner of this batch");
+        require(tokens[_batchID].currentOwner == msg.sender || msg.sender == admin, "You are neither the owner of this batch nor an admin.");
         require(keccak256(abi.encodePacked(tokens[_batchID].status)) == keccak256(abi.encodePacked("Stocked")), "Batch not available in stock");
 
         tokens[_batchID].currentOwner = _armyUnit;
